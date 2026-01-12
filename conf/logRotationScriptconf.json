@@ -1,0 +1,8 @@
+{
+  "logFilePath": "<log_file_path>",
+  "rotatedLogsDir": "<rotated_logs_dir>",
+  "rotationInterval": "12h", 
+  "dateFormat": "YYYY-MM-DD-HH-mm-ss",
+  "compress": false,
+  "enabled": false
+}
