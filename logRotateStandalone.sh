@@ -106,19 +106,19 @@ rotate_log() {
 
     log_msg "🔄 Rotating: $FILENAME → $NEW_FILENAME"
 
-    # Move the log file to rotated directory
-    if mv "$LOG_FILE_PATH" "$NEW_FILE_PATH"; then
-        log_msg "✅ File moved to: $NEW_FILE_PATH"
+    # Copy the log file to rotated directory (copytruncate method)
+    if cp "$LOG_FILE_PATH" "$NEW_FILE_PATH"; then
+        log_msg "✅ File copied to: $NEW_FILE_PATH"
     else
-        log_msg "❌ Failed to move file"
+        log_msg "❌ Failed to copy file"
         return 1
     fi
 
-    # Create new empty log file
-    if touch "$LOG_FILE_PATH"; then
-        log_msg "✅ New empty file created: $LOG_FILE_PATH"
+    # Truncate the original log file (preserves file descriptor for running processes)
+    if > "$LOG_FILE_PATH"; then
+        log_msg "✅ Original file truncated: $LOG_FILE_PATH"
     else
-        log_msg "❌ Failed to create new empty file"
+        log_msg "❌ Failed to truncate original file"
         return 1
     fi
 
