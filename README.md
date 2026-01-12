@@ -4,7 +4,7 @@ Collection of log rotation scripts for automated log file management.
 
 ## Scripts
 
-### 1. logRotate.sh / logRotateStandalone.sh
+### 1. logRotateStandalone.sh
 **Standalone bash script with command-line arguments**
 
 - No config file needed
